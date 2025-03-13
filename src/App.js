@@ -1,24 +1,20 @@
 import './App.css';
 import React, { useState } from 'react';
-import Header from './components/Header';
-import SearchBar from './components/SearchBar';
-import ItemList from './components/ItemList';
-import Footer from './components/Footer';
+import SearchBox from './components/SearchBox';
+import FilteredList from './components/FilteredList';
 
 const App = () => {
+    // Estado para la lista de elementos y el texto de búsqueda
     const [searchTerm, setSearchTerm] = useState("");
     const items = ["React", "JavaScript", "Node.js", "CSS", "HTML", "Python", "Vue", "Angular"];
 
-    const filteredItems = items.filter(item => 
-        item.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
     return (
         <div>
-            <Header />
-            <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-            <ItemList items={filteredItems} />
-            <Footer />
+            <h1>Filtrado de Listas</h1>
+            {/* Componente de búsqueda */}
+            <SearchBox setSearchTerm={setSearchTerm} />
+            {/* Componente que muestra la lista filtrada */}
+            <FilteredList items={items} searchTerm={searchTerm} />
         </div>
     );
 };
